@@ -31,4 +31,4 @@ jobs:
         ../v install prantlf.jany
         ../v install prantlf.json
         ../v install prantlf.yaml
-        ../v test .
+        ./test.sh
