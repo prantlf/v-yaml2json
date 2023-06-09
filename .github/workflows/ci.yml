@@ -1,0 +1,34 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - master
+    tags-ignore:
+      - '**'
+    paths-ignore:
+      - '**/*.md'
+      - LICENSE
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout V
+      uses: actions/checkout@v3
+      with:
+        repository: vlang/v
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        path: yaml2json
+    - name: Build V
+      run: make
+    - name: Test
+      run: |
+        cd yaml2json
+        ../v install prantlf.jany
+        ../v install prantlf.json
+        ../v install prantlf.yaml
+        ../v test .
