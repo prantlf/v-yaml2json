@@ -38,7 +38,7 @@ mut:
 const hint = '(use -h for help)'
 
 fn parse_args() !&Config {
-	query := '^(--?)(no-)?([0-9a-zA-Z][-0-9a-z]*)(?:=(.*))?$'
+	query := '^(--?)(no-)?([0-9a-zA-Z][-0-9a-zA-Z]*)(?:=(.*))?$'
 	mut re := regex.regex_opt(query)!
 	mut i := 1
 	l := os.args.len
@@ -65,10 +65,10 @@ fn parse_args() !&Config {
 							return 1
 						}
 					}
-					'l', 'line-break' {
+					'l', 'L', 'line-break' {
 						cfg.line_break = flag
 					}
-					'p', 'pretty' {
+					'p', 'P', 'pretty' {
 						cfg.pretty = flag
 					}
 					'V', 'version' {
@@ -89,7 +89,8 @@ fn parse_args() !&Config {
 			opt := arg[groups[2].start..groups[2].end]
 			if lead == 1 {
 				for ch in opt {
-					i += parse_arg(rune(ch).str(), true)!
+					flag := ch < `A` || ch > `Z`
+					i += parse_arg(rune(ch).str(), flag)!
 				}
 			} else {
 				flag := if groups[1].start >= 0 {

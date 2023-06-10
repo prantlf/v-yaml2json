@@ -10,13 +10,13 @@ Convert a file `config.yaml` to a file `config.json`, append a trailing line bre
 
     yaml2json config.yaml -o config.json -lp
 
-Convert files using standard input and standard ouptut, as condensed as possible, no trailing line break:
+Convert a file using standard input and standard ouptut, as condensed as possible, no trailing line break:
 
     cat config.yaml | yaml2json > config.json
 
 ## Usage
 
-    Usage: yaml2json [options] [<yaml-file>]
+    yaml2json [options] [<yaml-file>]
 
     Options:
       -o|--output <file>  write the JSON output to a file
