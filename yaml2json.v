@@ -23,27 +23,26 @@ Options:
 If no input file is specified, it will be read from standard input.
 
 Examples:
-  $ yaml2json config.yaml -o config.json -p
+  $ yaml2json config.yaml -o config.json -lp
   $ cat config.yaml | yaml2json > config.json')
 }
 
 struct Config {
-	input  			string
-	output 			string
-	line_break	bool
-	pretty 			bool
+mut:
+	input      string
+	output     string
+	line_break bool
+	pretty     bool
 }
 
+const hint = '(use -h for help)'
+
 fn parse_args() !&Config {
-	hint := '(use -h for help)'
-	query := '^(?:--?)(no-)?([a-zA-Z][-a-z]*)$'
-	mut re := regex.regex_opt(query) or { panic(err) }
-	mut input := ''
-	mut output := ''
-	mut line_break := false
-	mut pretty := false
+	query := '^(--?)(no-)?([0-9a-zA-Z][-0-9a-z]*)(?:=(.*))?$'
+	mut re := regex.regex_opt(query)!
 	mut i := 1
 	l := os.args.len
+	mut cfg := &Config{}
 	for i < l {
 		arg := os.args[i]
 		i++
@@ -53,51 +52,61 @@ fn parse_args() !&Config {
 		start, _ := re.match_string(arg)
 		if start >= 0 {
 			groups := re.get_group_list()
-			flag := if groups[0].start >= 0 {
-				arg[groups[0].start..groups[0].end] != 'no-'
-			} else {
-				true
-			}
-			opt := arg[groups[1].start..groups[1].end]
-			match opt {
-				'o', 'output' {
-					if i == l {
-						return error('missing file name ${hint}')
+			parse_arg := fn [arg, i, l, groups, mut cfg] (opt string, flag bool) !int {
+				match opt {
+					'o', 'output' {
+						if groups[3].start >= 0 {
+							cfg.output = arg[groups[3].start..groups[3].end]
+						} else {
+							if i == l {
+								return error('missing file name ${hint}')
+							}
+							cfg.output = os.args[i]
+							return 1
+						}
 					}
-					output = os.args[i]
-					i++
+					'l', 'line-break' {
+						cfg.line_break = flag
+					}
+					'p', 'pretty' {
+						cfg.pretty = flag
+					}
+					'V', 'version' {
+						println(version)
+						exit(0)
+					}
+					'h', 'help' {
+						usage()
+						exit(0)
+					}
+					else {
+						return error('unknown argument "${arg}" ${hint}')
+					}
 				}
-				'l', 'line-break' {
-					line_break = flag
+				return 0
+			}
+			lead := groups[0].end - groups[0].start
+			opt := arg[groups[2].start..groups[2].end]
+			if lead == 1 {
+				for ch in opt {
+					i += parse_arg(rune(ch).str(), true)!
 				}
-				'p', 'pretty' {
-					pretty = flag
+			} else {
+				flag := if groups[1].start >= 0 {
+					arg[groups[1].start..groups[1].end] != 'no-'
+				} else {
+					true
 				}
-				'V', 'version' {
-					println(version)
-					exit(0)
-				}
-				'h', 'help' {
-					usage()
-					exit(0)
-				}
-				else {
-					return error('unknown argument "${arg}" ${hint}')
-				}
+				i += parse_arg(opt, flag)!
 			}
 			continue
 		}
-		input = arg
+		cfg.input = arg
 	}
 	if i < l {
-		input = os.args[i]
+		cfg.input = os.args[i]
 	}
-	return &Config{
-		input: input
-		output: output
-		line_break: line_break
-		pretty: pretty
-	}
+	return cfg
 }
 
 fn convert() ! {

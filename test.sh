@@ -20,7 +20,7 @@ test "stdin and stdout" 1
 cat .github/workflows/ci.yml | ./yaml2json > /dev/null
 
 test "file input and output"
-./yaml2json .github/workflows/ci.yml -l -p -o ci.json
+./yaml2json .github/workflows/ci.yml -lp -o ci.json
 rm ci.json
 
 echo "done"

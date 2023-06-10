@@ -8,7 +8,7 @@ Uses [json] and [yaml].
 
 Convert a file `config.yaml` to a file `config.json`, append a trailing line break to the JSON putput and make the output more readable by indentation:
 
-    yaml2json config.yaml -o config.json -l -p
+    yaml2json config.yaml -o config.json -lp
 
 Convert files using standard input and standard ouptut, as condensed as possible, no trailing line break:
 
@@ -32,6 +32,7 @@ Convert files using standard input and standard ouptut, as condensed as possible
     v -prod yaml2json.v
     v fmt -w .
     v vet .
+    npx conventional-changelog-cli -p angular -i CHANGELOG.md -s
 
 [json]: https://github.com/prantlf/v-json
 [yaml]: https://github.com/prantlf/v-yaml
