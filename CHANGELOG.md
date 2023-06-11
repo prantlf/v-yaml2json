@@ -1,3 +1,9 @@
+# [0.0.3](https://github.com/prantlf/v-yaml2json/compare/v0.0.2...v0.0.3) (2023-06-11)
+
+### Features
+
+* Parse the command-line arguments using cargs ([0f626a4](https://github.com/prantlf/v-yaml2json/commit/0f626a4b34593b9ca0ce59300c4c5a884ecef212))
+
 # [0.0.2](https://github.com/prantlf/v-yaml2json/compare/v0.0.1...v0.0.2) (2023-06-10)
 
 ### Features
