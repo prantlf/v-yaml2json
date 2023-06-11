@@ -28,6 +28,7 @@ jobs:
     - name: Test
       run: |
         cd yaml2json
+        ../v install prantlf.cargs
         ../v install prantlf.jany
         ../v install prantlf.json
         ../v install prantlf.yaml

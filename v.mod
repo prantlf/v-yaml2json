@@ -3,5 +3,5 @@ Module {
 	description: 'Converts YAML input to JSON output.'
 	version: '0.0.2'
 	license: 'MIT'
-	dependencies: ['prantlf.jany', 'prantlf.json', 'prantlf.yaml']
+	dependencies: ['prantlf.cargs', 'prantlf.jany', 'prantlf.json', 'prantlf.yaml']
 }
