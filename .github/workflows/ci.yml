@@ -1,4 +1,4 @@
-name: Test
+name: Build and Test or Release
 
 on:
   push:
@@ -12,25 +12,67 @@ on:
   pull_request:
 
 jobs:
-  test:
+
+  build-linux:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout V
-      uses: actions/checkout@v3
+    - name: Setup V
+      uses: prantlf/setup-v-action@v1
       with:
-        repository: vlang/v
-    - name: Checkout
+        version: master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Checkout Sources
       uses: actions/checkout@v3
-      with:
-        path: yaml2json
-    - name: Build V
-      run: make
-    - name: Test
+    - name: Install Dependencies
       run: |
-        cd yaml2json
-        ../v install prantlf.cargs
-        ../v install prantlf.jany
-        ../v install prantlf.json
-        ../v install prantlf.yaml
-        ../v yaml2json.v
-        ./test.sh
+        v install prantlf.cargs
+        v install prantlf.jany
+        v install prantlf.json
+        v install prantlf.yaml
+    - name: Build
+      run: v yaml2json.v
+    - name: Test
+      run: ./test.sh
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+    - name: Setup V
+      uses: prantlf/setup-v-action@v1
+      with:
+        version: master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Checkout Sources
+      uses: actions/checkout@v3
+    - name: Install Dependencies
+      run: |
+        v install prantlf.cargs
+        v install prantlf.jany
+        v install prantlf.json
+        v install prantlf.yaml
+    - name: Build
+      run: v yaml2json.v
+    - name: Test
+      run: ./test.sh
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+    - name: Setup V
+      uses: prantlf/setup-v-action@v1
+      with:
+        version: master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Checkout Sources
+      uses: actions/checkout@v3
+    - name: Install Dependencies
+      run: |
+        v install prantlf.cargs
+        v install prantlf.jany
+        v install prantlf.json
+        v install prantlf.yaml
+    - name: Build
+      run: v yaml2json.v
