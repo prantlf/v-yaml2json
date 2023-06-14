@@ -13,29 +13,21 @@ on:
 
 jobs:
 
-  build-linux:
+  linux:
     runs-on: ubuntu-latest
     steps:
     - name: Setup V
       uses: prantlf/setup-v-action@v1
       with:
         version: master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Checkout Sources
       uses: actions/checkout@v3
-    - name: Install Dependencies
-      run: |
-        v install prantlf.cargs
-        v install prantlf.jany
-        v install prantlf.json
-        v install prantlf.yaml
     - name: Build
       run: v yaml2json.v
     - name: Test
       run: ./test.sh
 
-  build-macos:
+  macos:
     runs-on: macos-latest
     steps:
     - name: Setup V
@@ -57,7 +49,7 @@ jobs:
     - name: Test
       run: ./test.sh
 
-  build-windows:
+  windows:
     runs-on: windows-latest
     steps:
     - name: Setup V
