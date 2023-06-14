@@ -16,12 +16,12 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout Sources
+      uses: actions/checkout@v3
     - name: Setup V
       uses: prantlf/setup-v-action@v1
       with:
         version: master
-    - name: Checkout Sources
-      uses: actions/checkout@v3
     - name: Build
       run: v yaml2json.v
     - name: Test
