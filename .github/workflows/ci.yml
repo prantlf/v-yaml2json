@@ -20,8 +20,6 @@ jobs:
       uses: actions/checkout@v3
     - name: Setup V
       uses: prantlf/setup-v-action@v1
-      with:
-        version: master
     - name: Build
       run: v yaml2json.v
     - name: Test
@@ -30,20 +28,10 @@ jobs:
   macos:
     runs-on: macos-latest
     steps:
-    - name: Setup V
-      uses: prantlf/setup-v-action@v1
-      with:
-        version: master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Checkout Sources
       uses: actions/checkout@v3
-    - name: Install Dependencies
-      run: |
-        v install prantlf.cargs
-        v install prantlf.jany
-        v install prantlf.json
-        v install prantlf.yaml
+    - name: Setup V
+      uses: prantlf/setup-v-action@v1
     - name: Build
       run: v yaml2json.v
     - name: Test
@@ -52,19 +40,9 @@ jobs:
   windows:
     runs-on: windows-latest
     steps:
-    - name: Setup V
-      uses: prantlf/setup-v-action@v1
-      with:
-        version: master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Checkout Sources
       uses: actions/checkout@v3
-    - name: Install Dependencies
-      run: |
-        v install prantlf.cargs
-        v install prantlf.jany
-        v install prantlf.json
-        v install prantlf.yaml
+    - name: Setup V
+      uses: prantlf/setup-v-action@v1
     - name: Build
       run: v yaml2json.v
