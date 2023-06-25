@@ -1,2 +1,4 @@
 .DS_Store
 yaml2json
+yaml2json.dSYM
+/ci.json

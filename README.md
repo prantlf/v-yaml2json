@@ -1,16 +1,16 @@
 # yaml2json
 
-Converts YAML input to JSON output.
+Converts [YAML] input to [JSON] output.
 
-Uses [json] and [yaml].
+Uses [prantlf.json] and [prantlf.yaml].
 
 ## Synopsis
 
-Convert a file `config.yaml` to a file `config.json`, append a trailing line break to the JSON putput and make the output more readable by indentation:
+Convert a file `config.yaml` to a file `config.json`, append a trailing line break to the JSON output and make the output more readable by indentation:
 
     yaml2json config.yaml -o config.json -lp
 
-Convert a file using standard input and standard ouptut, as condensed as possible, no trailing line break:
+Convert a file using standard input and standard output, as condensed as possible, no trailing line break:
 
     cat config.yaml | yaml2json > config.json
 
@@ -19,11 +19,12 @@ Convert a file using standard input and standard ouptut, as condensed as possibl
     yaml2json [options] [<yaml-file>]
 
     Options:
-      -o|--output <file>  write the JSON output to a file
-      -l|--line-break     append a line break to the JSON output
-      -p|--pretty         prints the JSON output with line breaks and indented
-      -V|--version        prints the version of the executable and exits
-      -h|--help           prints th usage information and exits
+      -o|--output <file>    write the JSON output to a file
+      -t|--trailing-commas  insert trailing commas to arrays and objects
+      -l|--line-break       append a line break to the JSON output
+      -p|--pretty           prints the JSON output with line breaks and indented
+      -V|--version          prints the version of the executable and exits
+      -h|--help             prints th usage information and exits
 
     If no input file is specified, it will be read from standard input.
 
@@ -34,5 +35,7 @@ Convert a file using standard input and standard ouptut, as condensed as possibl
     v vet .
     npx conventional-changelog-cli -p angular -i CHANGELOG.md -s
 
-[json]: https://github.com/prantlf/v-json
-[yaml]: https://github.com/prantlf/v-yaml
+[prantlf.json]: https://github.com/prantlf/v-json
+[prantlf.yaml]: https://github.com/prantlf/v-yaml
+[JSON]: https://www.json.org/
+[YAML]: https://yaml.org/
