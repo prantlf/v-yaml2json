@@ -15,6 +15,8 @@ Options:
   -o|--output <file>    write the JSON output to a file
 	-t|--trailing-commas  insert trailing commas to arrays and objects
 	-s|--single-quotes    format single-quoted instead of double-quoted strings
+	--escape-slashes      escape slashes by by prefixing them with a backslash
+	--escape-unicode      escape multibyte Unicode characters with \\u literals
   -l|--line-break       append a line break to the JSON output
   -p|--pretty           prints the JSON output with line breaks and indented
   -V|--version          prints the version of the executable and exits
@@ -31,6 +33,8 @@ mut:
 	output          string
 	trailing_commas bool
 	single_quotes   bool
+	escape_slashes  bool
+	escape_unicode  bool
 	line_break      bool
 	pretty          bool
 }
@@ -52,6 +56,8 @@ fn convert() ! {
 		pretty: opts.pretty
 		trailing_commas: opts.trailing_commas
 		single_quotes: opts.single_quotes
+		escape_slashes: opts.escape_slashes
+		escape_unicode: opts.escape_unicode
 	})
 	if opts.line_break {
 		dst += '\n'
