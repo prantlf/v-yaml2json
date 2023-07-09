@@ -1,5 +1,11 @@
 # Changes
 
+## [0.0.6](https://github.com/prantlf/v-yaml2json/compare/v0.0.5...v0.0.6) (2023-07-09)
+
+### Features
+
+* Allow to control escaping slashes and unicode characters ([3cc9032](https://github.com/prantlf/v-yaml2json/commit/3cc9032fe5ef3f063a639b3edff559663c15e561))
+
 ## [0.0.5](https://github.com/prantlf/v-yaml2json/compare/v0.0.4...v0.0.5) (2023-07-09)
 
 ### Features
