@@ -1,3 +1,7 @@
+ifeq (1,${RELEASE})
+	VFLAGS=-prod
+endif
+
 all: check build test
 
 check:
@@ -5,7 +9,7 @@ check:
 	v vet .
 
 build:
-	v yaml2json.v
+	v $(VFLAGS) yaml2json.v
 
 test:
 	./test.sh
