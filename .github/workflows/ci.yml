@@ -17,28 +17,53 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Sources
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Setup V
       uses: prantlf/setup-v-action@v1
     - name: Build and Test
       run: make RELEASE=1
+    - name: Shelve output
+      uses: prantlf/shelve-output-action@v1
 
   macos:
     runs-on: macos-latest
     steps:
     - name: Checkout Sources
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Setup V
       uses: prantlf/setup-v-action@v1
     - name: Build and Test
       run: make RELEASE=1
+    - name: Shelve output
+      uses: prantlf/shelve-output-action@v1
 
   windows:
     runs-on: windows-latest
     steps:
     - name: Checkout Sources
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Setup V
       uses: prantlf/setup-v-action@v1
     - name: Build
       run: cmd /c make.bat
+    - name: Shelve output
+      uses: prantlf/shelve-output-action@v1
+
+  release:
+    needs:
+      - linux
+      - macos
+      - windows
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v4
+    - name: Unshelve output
+      uses: prantlf/unshelve-output-action@v1
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: binaries
+        path: '*.zip'
+    - name: Discard shelf
+      uses: prantlf/discard-shelf-action@v1
