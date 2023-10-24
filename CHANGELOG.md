@@ -1,5 +1,11 @@
 # Changes
 
+## [0.0.7](https://github.com/prantlf/v-yaml2json/compare/v0.0.6...v0.0.7) (2023-10-24)
+
+### Bug Fixes
+
+* Build with updated dependencies ([799e1f2](https://github.com/prantlf/v-yaml2json/commit/799e1f266aecf55ca443d77bcd33fc59c9a0ff5d))
+
 ## [0.0.6](https://github.com/prantlf/v-yaml2json/compare/v0.0.5...v0.0.6) (2023-07-09)
 
 ### Features
