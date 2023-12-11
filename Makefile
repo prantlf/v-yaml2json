@@ -9,7 +9,7 @@ check:
 	v vet .
 
 build:
-	v $(VFLAGS) yaml2json.v
+	v $(VFLAGS) -use-os-system-to-run yaml2json.v
 
 test:
 	./test.sh
