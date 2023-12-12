@@ -52,8 +52,8 @@ jobs:
       with:
         files: ${{ needs.linux.outputs.changed-files }}
         discard-shelf: false
-    - name: Build and Test
-      run: make RELEASE=1
+    - name: Build
+      run: make build RELEASE=1
     - name: Shelve output
       if: ${{ needs.linux.outputs.changed == 'true' }}
       uses: prantlf/shelve-output-action@v2
