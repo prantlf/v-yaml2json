@@ -1,5 +1,11 @@
 # Changes
 
+## [0.1.0](https://github.com/prantlf/v-yaml2json/compare/v0.0.7...v0.1.0) (2023-12-12)
+
+### Features
+
+* Add arm64 build, cross-compile for Windows ([8353966](https://github.com/prantlf/v-yaml2json/commit/8353966a82e22605460bb9c54a64716a0ad9ab84))
+
 ## [0.0.7](https://github.com/prantlf/v-yaml2json/compare/v0.0.6...v0.0.7) (2023-10-24)
 
 ### Bug Fixes
