@@ -1,5 +1,11 @@
 # Changes
 
+## [0.2.0](https://github.com/prantlf/v-yaml2json/compare/v0.1.0...v0.2.0) (2023-12-14)
+
+### Features
+
+* Add the linux arm64 support ([d824b2c](https://github.com/prantlf/v-yaml2json/commit/d824b2c6375d71de1f6b129a6d61569f73afa1f0))
+
 ## [0.1.0](https://github.com/prantlf/v-yaml2json/compare/v0.0.7...v0.1.0) (2023-12-12)
 
 ### Features
