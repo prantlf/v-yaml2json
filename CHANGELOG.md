@@ -1,5 +1,11 @@
 # Changes
 
+## [0.3.1](https://github.com/prantlf/v-yaml2json/compare/v0.3.0...v0.3.1) (2023-12-15)
+
+### Bug Fixes
+
+* Include man pages in asset archives ([130b7e7](https://github.com/prantlf/v-yaml2json/commit/130b7e7df5cdde54a4346dbec27e1e15abdebeb5))
+
 ## [0.3.0](https://github.com/prantlf/v-yaml2json/compare/v0.2.0...v0.3.0) (2023-12-15)
 
 ### Features
