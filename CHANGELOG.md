@@ -1,5 +1,11 @@
 # Changes
 
+## [0.3.0](https://github.com/prantlf/v-yaml2json/compare/v0.2.0...v0.3.0) (2023-12-15)
+
+### Features
+
+* Add the man file ([ecff662](https://github.com/prantlf/v-yaml2json/commit/ecff662b365ec2f400aaf9c785e937e13f4366d6))
+
 ## [0.2.0](https://github.com/prantlf/v-yaml2json/compare/v0.1.0...v0.2.0) (2023-12-14)
 
 ### Features
