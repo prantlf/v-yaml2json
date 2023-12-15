@@ -1,0 +1,80 @@
+.TH yaml2json "1" "December 15, 2023" "" "yaml2json manual"
+
+.SH NAME
+yaml2json - Converts YAML input to JSON/JSON5 output.
+
+.SH SYNOPSIS
+.B yaml2json
+[-o|--output
+.I file
+] [-m|--mode
+.I
+mode
+] [-w|--overwrite]
+.br
+[-p|--pretty] [-k|--check] [-a|--compact] [-t|--trailing-commas]
+.br
+[-s|--single-quotes] [--escape-slashes] [--escape-unicode]
+.br
+[-l|--line-break] [-V|--version] [-h|--help]
+[
+.I [file ...]
+]
+.RE
+
+.SH DESCRIPTION
+yaml2json converts YAML input to JSON/JSON5 output.
+
+.SH ARGUMENTS
+.B
+.IP "file"
+read the JSON/JSONC/JSON5 input from a file
+
+.SH OPTIONS
+.B
+.IP "-o|--output file"
+write the JSON output to a file
+.B
+.IP "-t|--trailing-commas"
+insert trailing commas to arrays and objects
+.B
+.IP "-s|--single-quotes"
+format single-quoted instead of double-quoted strings
+.B
+.IP "--escape-slashes"
+escape slashes by by prefixing them with a backslash
+.B
+.IP "--escape-unicode"
+escape multibyte Unicode characters with \u literals
+.B
+.IP "-l|--line-break"
+append a line break to the JSON output
+.B
+.IP "-p|--pretty"
+print the JSON output with line breaks and indented
+.B
+.IP "-V|--version"
+print the version of the executable and exit
+.B
+.IP "-h|--help"
+print the usage information and exit
+
+.RE
+If no input file is specified, it will be read from standard input.
+
+.SH EXAMPLES
+.B
+.IP "yaml2json config.yaml -o config.json -lp"
+Covert a file with prettifying and ensuring a trailing line break.
+.B
+.IP "cat config.yaml | yaml2json > config.json"
+Covert a file minifying the result.
+
+.SH BUGS
+yaml2json's bug tracker is located at <https://github.com/prantlf/v-yaml2json/issues>
+
+.SH DOCUMENTATION
+See the website for documentation <https://github.com/prantlf/v-yaml2json#readme>
+
+.SH AUTHOR
+Currently maintained by Ferdinand Prantl <prantlf@gmail.com>
