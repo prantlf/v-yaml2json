@@ -1,1 +1,1 @@
-v -prod yaml2json.v
+v -prod -o yaml2json .
