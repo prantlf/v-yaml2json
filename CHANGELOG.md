@@ -1,5 +1,11 @@
 # Changes
 
+## [0.3.2](https://github.com/prantlf/v-yaml2json/compare/v0.3.1...v0.3.2) (2024-01-01)
+
+### Bug Fixes
+
+* Adapt to changes on interface of json and yaml packages ([7ad5f6d](https://github.com/prantlf/v-yaml2json/commit/7ad5f6d2db69220da8a536e59ff8911f5e45f11e))
+
 ## [0.3.1](https://github.com/prantlf/v-yaml2json/compare/v0.3.0...v0.3.1) (2023-12-15)
 
 ### Bug Fixes
