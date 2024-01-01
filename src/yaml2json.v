@@ -1,6 +1,6 @@
 import os
 import prantlf.cargs { Input, parse }
-import prantlf.json { StringifyOpts, stringify }
+import prantlf.json { StringifyOpts, stringify_opt }
 import prantlf.yaml { parse_file, parse_text }
 
 const version = '0.3.1'
@@ -52,7 +52,7 @@ fn convert() ! {
 		parse_text(input)!
 	}
 
-	mut dst := stringify(src, StringifyOpts{
+	mut dst := stringify_opt(src, &StringifyOpts{
 		pretty: opts.pretty
 		trailing_commas: opts.trailing_commas
 		single_quotes: opts.single_quotes
