@@ -53,11 +53,11 @@ fn convert() ! {
 	}
 
 	mut dst := stringify_opt(src, &StringifyOpts{
-		pretty: opts.pretty
+		pretty:          opts.pretty
 		trailing_commas: opts.trailing_commas
-		single_quotes: opts.single_quotes
-		escape_slashes: opts.escape_slashes
-		escape_unicode: opts.escape_unicode
+		single_quotes:   opts.single_quotes
+		escape_slashes:  opts.escape_slashes
+		escape_unicode:  opts.escape_unicode
 	})
 	if opts.line_break {
 		dst += '\n'
