@@ -1,5 +1,12 @@
 # Changes
 
+## [0.3.3](https://github.com/prantlf/v-yaml2json/compare/v0.3.2...v0.3.3) (2025-03-22)
+
+### Bug Fixes
+
+* Upgrade dependencies ([0a1d2fc](https://github.com/prantlf/v-yaml2json/commit/0a1d2fca3598451318306fcc76e20a1594bf3fcf))
+* Fix sources for the new V compiler ([1ce89d8](https://github.com/prantlf/v-yaml2json/commit/1ce89d8d4d48c5154d79e95a5fe4a0a65dd431fb))
+
 ## [0.3.2](https://github.com/prantlf/v-yaml2json/compare/v0.3.1...v0.3.2) (2024-01-01)
 
 ### Bug Fixes
