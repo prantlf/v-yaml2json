@@ -1,5 +1,11 @@
 # Changes
 
+## [0.4.0](https://github.com/prantlf/v-yaml2json/compare/v0.3.3...v0.4.0) (2025-03-22)
+
+### Features
+
+* Add RISC-V build ([ef07c95](https://github.com/prantlf/v-yaml2json/commit/ef07c95c9b164a9ee1e4f22733847127c5ce322d))
+
 ## [0.3.3](https://github.com/prantlf/v-yaml2json/compare/v0.3.2...v0.3.3) (2025-03-22)
 
 ### Bug Fixes

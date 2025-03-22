@@ -3,7 +3,7 @@ import prantlf.cargs { Input, parse }
 import prantlf.json { StringifyOpts, stringify_opt }
 import prantlf.yaml { parse_file, parse_text }
 
-const version = '0.3.3'
+const version = '0.4.0'
 
 const usage = 'Converts YAML input to JSON/JSON5 output.
 
