@@ -31,18 +31,6 @@ jobs:
       uses: prantlf/shelve-output-action@v3
       with:
         extra: man
-    - name: Install ARM Cross-Compiler
-      run: |
-        sudo apt-get update
-        sudo apt-get install gcc gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu
-    - name: Build ARM
-      run: make build RELEASE=1 LINUX_ARM=1
-    - name: Shelve output
-      if: ${{ steps.bump.outputs.bumped == 'true' }}
-      uses: prantlf/shelve-output-action@v3
-      with:
-        arch: arm64
-        extra: man
 
   linux-arm:
     if: ${{ github.ref_name == 'master' && needs.linux.outputs.changed == 'true' }}
@@ -152,22 +140,16 @@ jobs:
   #     - linux
   #   runs-on: ubuntu-latest
   #   steps:
-  #   - name: Checkout Sources
-  #     uses: actions/checkout@v4
-  #   - name: Setup V
-  #     uses: prantlf/setup-v-action@v2
-  #   - name: Unshelve changes
-  #     if: ${{ needs.linux.outputs.changed == 'true' }}
+  #   - uses: actions/checkout@v4
+  #   - uses: prantlf/setup-v-action@v2
+  #   - if: ${{ needs.linux.outputs.changed == 'true' }}
   #     uses: prantlf/unshelve-changes-action@v2
   #     with:
   #       files: ${{ needs.linux.outputs.changed-files }}
   #       discard-shelf: false
-  #   - name: Install Cross-Compiler
-  #     run: sudo apt-get install gcc-mingw-w64-x86-64
-  #   - name: Build Windows
-  #     run: make build RELEASE=1 WINDOWS=1
-  #   - name: Shelve output
-  #     if: ${{ needs.linux.outputs.changed == 'true' }}
+  #   - run: sudo apt-get install gcc-mingw-w64-x86-64
+  #   - run: make build RELEASE=1 WINDOWS=1
+  #   - if: ${{ needs.linux.outputs.changed == 'true' }}
   #     uses: prantlf/shelve-output-action@v3
   #     with:
   #       os: windows
@@ -177,20 +159,15 @@ jobs:
   #     - linux
   #   runs-on: windows-latest
   #   steps:
-  #   - name: Checkout Sources
-  #     uses: actions/checkout@v4
-  #   - name: Setup V
-  #     uses: prantlf/setup-v-action@v2
-  #   - name: Unshelve changes
-  #     if: ${{ needs.linux.outputs.changed == 'true' }}
+  #   - uses: actions/checkout@v4
+  #   - uses: prantlf/setup-v-action@v2
+  #   - if: ${{ needs.linux.outputs.changed == 'true' }}
   #     uses: prantlf/unshelve-changes-action@v2
   #     with:
   #       files: ${{ needs.linux.outputs.changed-files }}
   #       discard-shelf: false
-  #   - name: Build
-  #     run: cmd /c make.bat
-  #   - name: Shelve output
-  #     if: ${{ needs.linux.outputs.changed == 'true' }}
+  #   - run: cmd /c make.bat
+  #   - if: ${{ needs.linux.outputs.changed == 'true' }}
   #     uses: prantlf/shelve-output-action@v3
 
   release:
@@ -204,15 +181,11 @@ jobs:
       - windows-cross
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout sources
-      uses: actions/checkout@v4
-    - name: Unshelve changes
-      uses: prantlf/unshelve-changes-action@v2
+    - uses: actions/checkout@v4
+    - uses: prantlf/unshelve-changes-action@v2
       with:
         files: ${{ needs.linux.outputs.changed-files }}
-    - name: Unshelve output
-      uses: prantlf/unshelve-output-action@v7
-    - name: Publish release
-      uses: prantlf/finish-release-action@v1
+    - uses: prantlf/unshelve-output-action@v7
+    - uses: prantlf/finish-release-action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
