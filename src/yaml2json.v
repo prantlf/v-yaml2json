@@ -62,7 +62,7 @@ fn convert() ! {
 	if opts.line_break {
 		dst += '\n'
 	}
-	if opts.output.len > 0 {
+	if opts.output != '' {
 		os.write_file(opts.output, dst)!
 	} else {
 		print(dst)
